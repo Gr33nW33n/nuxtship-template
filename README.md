@@ -1,4 +1,14 @@
-# Nuxt 3 Minimal Starter
+# Nuxtship - Nuxt SAAS Starter Website Template
+
+Nuxtship is a free starter nuxt website template for saas, startups, marketing websites & landing pages. Built with Nuxt & TailwindCSS.
+
+This Free Template is sponsored by [Gr33nW33n](https://github.com/Gr33nW33n)
+
+## Live Demo
+
+**[https://snazzy-semolina-467693.netlify.app/](https://snazzy-semolina-467693.netlify.app/)**
+
+## Built with Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
