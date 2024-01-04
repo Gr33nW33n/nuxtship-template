@@ -4,6 +4,8 @@ Nuxtship is a free starter nuxt website template for saas, startups, marketing w
 
 This Free Template is sponsored by [Gr33nW33n](https://github.com/Gr33nW33n)
 
+If you like my work please feel free to [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/jakobaichmayr){:target="_blank"}
+
 ## Live Demo
 
 **[https://snazzy-semolina-467693.netlify.app/](https://snazzy-semolina-467693.netlify.app/)**
