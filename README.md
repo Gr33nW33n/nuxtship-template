@@ -10,7 +10,7 @@ If you like my work please feel free to
 
 ## Live Demo
 
-**[https://snazzy-semolina-467693.netlify.app/](https://snazzy-semolina-467693.netlify.app/)**
+**[https://nuxtship.netlify.app/](https://nuxtship.netlify.app/)**
 
 ## Built with Nuxt 3 Minimal Starter
 
