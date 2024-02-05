@@ -3,13 +3,13 @@ const features = [
   {
     title: "Bring Your Own Framework",
     description:
-      "Build your site using Vue, web components, or just plain ol' HTML + JavaScript.",
+      "Cannapi supports a wide-range of platforms to manage and update.",
     icon: "bx:bxs-briefcase",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "100% Transparent",
     description:
-      "Nuxt renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+      "Monitor your requests progress via our shared Trello Board.",
     icon: "bx:bxs-window-alt",
   },
   {
@@ -40,13 +40,12 @@ const features = [
 </script>
 
 <template>
-  <div class="mt-16 md:mt-0">
-    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-      Everything you need to start a website
+  <div class="mt-16 md:mt-0" id="features">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight ">
+      Support you need to empower your website to achieve your goals. 
     </h2>
     <p class="text-lg mt-4 text-slate-600">
-      Nuxt comes batteries included. It takes the best parts of state-of-the-art
-      tools and adds its own innovations.
+      Send Cannapi your issues, website platform, and general info and we take care of the rest.  
     </p>
   </div>
 

@@ -1,47 +1,50 @@
 <script setup>
-defineProps(["plan"]);
+  defineProps(["plan"]);
 </script>
 
 <template>
   <div>
     <div
-      class="flex flex-col w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md"
-    >
-      <div class="text-center">
-        <h4 class="text-lg font-medium text-gray-400">{{ plan.name }}</h4>
-        <p class="mt-3 text-4xl font-bold text-black md:text-4xl">
-          {{
+      class="rounded-xl divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow bg-white dark:bg-gray-900 relative flex flex-col self-stretch w-full">
+
+      <div class="flex-1 flex flex-col gap-y-6 sm:p-6 p-8 xl:p-10">
+
+        <div>
+          <div class="flex items-center justify-between">
+            <p class="text-2xl text-gray-900 dark:text-white sm:text-3xl font-semibold truncate">
+              {{ plan.name }}
+            </p>
+
+          </div>
+          <p class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2">
+            {{ plan.subText }}
+          </p>
+        </div>
+        <div class="flex flex-row items-baseline gap-x-1">
+
+          <p class="text-gray-900 dark:text-white text-2xl sm:text-4xl font-semibold">
+            {{
             plan.price && typeof plan.price === "object"
               ? plan.price.monthly
               : plan.price
           }}
-        </p>
-        <!-- {
-        plan.price.original && (
-          <p class="mt-1 text-xl font-medium text-gray-400 line-through md:text-2xl">
-            {plan.price.original}
           </p>
-        )
-      } -->
-      </div>
-      <ul class="grid mt-8 text-left gap-y-4">
-        <li
-          v-for="item of plan.features"
-          class="flex items-start gap-3 text-gray-800"
-        >
-          <LandingTick className="w-6 h-6" />
-          <span>{{ item }}</span>
-        </li>
-      </ul>
-      <div class="flex mt-8">
-        <LandingLink
-          :href="plan.button.link || '#'"
-          block
-          :styleName="plan.popular ? 'primary' : 'outline'"
-        >
+        </div>
+        <div class="order-last flex-1">
+          <!--[-->
+          <ul class="space-y-1 text-sm">
+            <li class="flex items-center gap-x-3" v-for="item of plan.features">
+              <Icon class="h-8 md:h-14 text-green-500" name="uil:angle-double-right" size="48" />
+              <span class="text-gray-600 dark:text-gray-400">{{ item }}</span></li>
+           
+          </ul>
+        </div>
+        <LandingButton :href="plan.button.link || '#'" block :styleName="plan.popular ? 'primary' : 'outline'">
           {{ plan.button.text || "Get Started" }}
-        </LandingLink>
+        </LandingButton>
       </div>
     </div>
+
+
   </div>
 </template>

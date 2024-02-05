@@ -5,55 +5,53 @@ definePageMeta({
 
 const pricing = [
   {
-    name: "Personal",
-    price: "Free",
+    name: "Basic",
+    price: "$500/month",
+    subText: "Get Started",
     popular: false,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Nuxt Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "Unlimited updates",
+      "One request at a time",
+      "Average 48 hour delivery",
+      "Limited Stock photo access",
+      "Tier 1 Website Support",
+      "Pause or cancel anytime"
     ],
     button: {
-      text: "Get Started",
+      text: "Get Started Today",
       link: "/",
     },
   },
   {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
-    },
+    name: "Pro",
+    price: "$800/month",
+    subText: "Best Value",
     popular: true,
     features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
+      "Unlimited updates",
+      "Two request at a time",
+      "Average 48 hour delivery",
+      "Unlimited Stock photo access",
+      "Tier 1 & 2 Website Support",
+      "Pause or cancel anytime"
     ],
     button: {
-      text: "Get Started",
+      text: "Get Started Today",
       link: "#",
     },
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    price: "Let's Chat",
+    subText: "Custom Solution",
     popular: false,
     features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
+      "All Pro features",
+      "Domain support", 
+      "DNS configuration",
+      "Propietary systems",
+      "Marketing solutions",
+      "Custom design access"
     ],
     button: {
       text: "Contact us",
@@ -75,5 +73,6 @@ const pricing = [
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
       <LandingPricing v-for="item of pricing" :plan="item" />
     </div>
+    <LandingPlatformTiers></LandingPlatformTiers>
   </LandingContainer>
 </template>

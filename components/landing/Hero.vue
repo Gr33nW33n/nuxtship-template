@@ -13,13 +13,13 @@
     </div>
 
     <div>
-      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight">
-        Marketing website done with Nuxt
+      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight text-green-500">
+        Asynchronous Website Support 
       </h1>
-      <p class="text-lg mt-4 text-slate-600 max-w-xl">
-        Nuxtship is a starter template for startups, marketing websites &
-        landing pages.<wbr /> Built with Nuxt & TailwindCSS. You can quickly
-        create any website with this starter.
+      <p class="text-xl mt-4 text-slate-600 max-w-xl">
+        Cannapi offers subscription based website updates and tweaks. 
+        <wbr /> 
+        Quickly get your website the way you want it without dealing with frustrating digital agencies.
       </p>
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
         <LandingLink
@@ -27,14 +27,6 @@
           target="_blank"
           rel="noopener"
           >Get Started</LandingLink
-        >
-        <LandingLink
-          size="lg"
-          styleName="outline"
-          rel="noopener"
-          href="https://github.com/Gr33nW33n/nuxtship-template"
-          target="_blank"
-          >View Repo</LandingLink
         >
       </div>
     </div>

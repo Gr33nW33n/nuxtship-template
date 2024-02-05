@@ -50,9 +50,10 @@ const team = [
         Empowering the world with Nuxt.
       </h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+       
+        Cannapi offers subscription based website updates and tweaks. 
+        <wbr /> 
+        Quickly get your website the way you want it without dealing with frustrating digital agencies..
       </p>
     </div>
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">

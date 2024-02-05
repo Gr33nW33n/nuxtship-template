@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background-color: #121717;
+}
+
+
+
+
+h1, h2, h3{
+    font-family: 'DM Sans';
+    font-weight: 700;
+    color: rgb(34 197 94);
+}
+
+a.logo-text{
+    font-family: 'Pacifico';
+    color: rgb(34 197 94);
+    font-size: 3rem;
+}
