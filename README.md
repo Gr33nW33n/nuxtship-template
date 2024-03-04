@@ -87,3 +87,8 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Attributions
+
+Original Astroship Template: **[https://astroship.web3templates.com/](https://astroship.web3templates.com/)** from **[Web3Templates](https://web3templates.com/)**
+Forked from: **[https://github.com/surjithctly/astroship](https://github.com/surjithctly/astroship)**
