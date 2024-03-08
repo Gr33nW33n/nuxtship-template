@@ -6,7 +6,11 @@ This Free Template is sponsored by [Gr33nW33n](https://github.com/Gr33nW33n)
 
 If you like my work please feel free to
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/jakobaichmayr)
+[
+  ![Donate with PayPal]
+  (https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)
+]
+(https://www.paypal.com/paypalme/jakobaichmayr)
 
 ## Live Demo
 
