@@ -6,7 +6,9 @@ This Free Template is sponsored by [Gr33nW33n](https://github.com/Gr33nW33n)
 
 If you like my work please feel free to
 
-[![Donate with PayPal](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://www.paypal.com/paypalme/jakobaichmayr)
+<a href="https://www.paypal.com/paypalme/jakobaichmayr" target="_blank">
+  <img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" alt="Donate with PayPal" width="260" />
+</a>
 
 ## Live Demo
 
