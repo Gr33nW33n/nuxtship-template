@@ -2,28 +2,492 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply bg-white text-slate-800;
+/* ═══════════════════════════════════════════════════════════
+   ECO-INFINITY  ·  Global Design System
+   Dark mode · Dragon-scale hex pattern · Tetris elements
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Base reset ─── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-@layer utilities {
-    .reveal-on-scroll {
-        @apply opacity-0 translate-y-8 transition-all duration-1000 ease-out;
+html {
+    background-color: #000000;
+}
+
+body {
+    background-color: #000000;
+    color: #f1f5f9;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Full-viewport hex dragon-scale — covers the entire browser window including side margins */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'%3E%3Cpath d='M28 2 L52 16 L52 48 L28 62 L4 48 L4 16 Z' fill='none' stroke='%2339ff14' stroke-width='0.7'/%3E%3C/svg%3E");
+    background-size: 56px 64px;
+    background-repeat: repeat;
+    opacity: 0.052;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'%3E%3Cpath d='M28 2 L52 16 L52 48 L28 62 L4 48 L4 16 Z' fill='none' stroke='%2339ff14' stroke-width='0.7'/%3E%3C/svg%3E");
+    background-size: 56px 64px;
+    background-position: 28px 32px;
+    background-repeat: repeat;
+    opacity: 0.030;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ─── CSS custom properties ─── */
+:root {
+    --neon: #39ff14;
+    --neon-dim: rgba(57, 255, 20, 0.10);
+    --neon-glow: rgba(57, 255, 20, 0.35);
+    --black: #000000;
+    --card: #0a0a0a;
+    --card-hover: #0f120f;
+    --border: rgba(57, 255, 20, 0.10);
+    --border-hover: rgba(57, 255, 20, 0.40);
+}
+
+/* ════════════════════════════════════════════════════════
+   🐉  DRAGON-SCALE  ·  Hexagonal SVG background pattern
+════════════════════════════════════════════════════════ */
+
+/*
+  SVG hex path:  pointy-top hexagon, 40×46 cell
+  The hex outline is drawn with a single <path>.
+  We use a data-URI so no external file is needed.
+  opacity on the container keeps it subtle (6–8%).
+*/
+.hex-pattern-bg {
+    position: relative;
+    isolation: isolate;
+}
+
+.hex-pattern-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'%3E%3Cpath d='M28 2 L52 16 L52 48 L28 62 L4 48 L4 16 Z' fill='none' stroke='%2339ff14' stroke-width='0.6'/%3E%3C/svg%3E");
+    background-size: 56px 64px;
+    background-repeat: repeat;
+    opacity: 0.055;
+    pointer-events: none;
+    z-index: 0;
+    will-change: opacity;
+}
+
+/* Interlocked offset row – creates the "dragon-scale" stagger */
+.hex-pattern-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'%3E%3Cpath d='M28 2 L52 16 L52 48 L28 62 L4 48 L4 16 Z' fill='none' stroke='%2339ff14' stroke-width='0.6'/%3E%3C/svg%3E");
+    background-size: 56px 64px;
+    background-position: 28px 32px;
+    /* offset by half cell → interlock */
+    background-repeat: repeat;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 0;
+    will-change: opacity;
+}
+
+/* ════════════════════════════════════════════════════════
+   🧩  TETRIS FLOATING PIECES  ·  Base styles
+════════════════════════════════════════════════════════ */
+
+.tetris-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Every piece */
+.t-piece {
+    position: absolute;
+    display: grid;
+    gap: 3px;
+    opacity: 0;
+    /* starts hidden; animation fades in */
+    will-change: transform, opacity;
+    filter: blur(0.3px);
+}
+
+/* Individual cube cell */
+.t-cell {
+    border-radius: 3px;
+    background: var(--neon);
+    box-shadow: 0 0 6px rgba(57, 255, 20, 0.6), inset 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+.t-cell-dim {
+    border-radius: 3px;
+    background: rgba(57, 255, 20, 0.35);
+    box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
+}
+
+/* Rubik face */
+.rubik-face {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    padding: 3px;
+    background: rgba(57, 255, 20, 0.04);
+    border: 1px solid rgba(57, 255, 20, 0.18);
+    border-radius: 5px;
+}
+
+.rubik-cell {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    border: 1px solid rgba(57, 255, 20, 0.25);
+}
+
+/* ════════════════════════════════════════════════════════
+   🎞  TETRIS KEYFRAME ANIMATIONS
+════════════════════════════════════════════════════════ */
+
+/* Gentle float for hero pieces */
+@keyframes tfloat-a {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.13;
     }
 
-    .reveal-on-scroll.is-visible {
-        @apply opacity-100 translate-y-0;
+    30% {
+        transform: translateY(-16px) rotate(4deg);
+        opacity: 0.18;
     }
 
-    .delay-100 {
-        transition-delay: 100ms;
+    60% {
+        transform: translateY(-8px) rotate(-3deg);
+        opacity: 0.15;
+    }
+}
+
+@keyframes tfloat-b {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.10;
     }
 
-    .delay-200 {
-        transition-delay: 200ms;
+    40% {
+        transform: translateY(-22px) rotate(-5deg);
+        opacity: 0.16;
     }
 
-    .delay-300 {
-        transition-delay: 300ms;
+    70% {
+        transform: translateY(-10px) rotate(3deg);
+        opacity: 0.12;
     }
+}
+
+@keyframes tfloat-c {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.08;
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(6deg);
+        opacity: 0.13;
+    }
+}
+
+@keyframes tdrift {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.09;
+    }
+
+    25% {
+        transform: translate(12px, -18px) rotate(90deg);
+        opacity: 0.14;
+    }
+
+    50% {
+        transform: translate(-8px, -30px) rotate(180deg);
+        opacity: 0.11;
+    }
+
+    75% {
+        transform: translate(10px, -16px) rotate(270deg);
+        opacity: 0.13;
+    }
+}
+
+@keyframes tcube-spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.10;
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.06);
+        opacity: 0.16;
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.10;
+    }
+}
+
+.anim-float-a {
+    animation: tfloat-a var(--dur, 12s) ease-in-out var(--delay, 0s) infinite;
+}
+
+.anim-float-b {
+    animation: tfloat-b var(--dur, 16s) ease-in-out var(--delay, 0s) infinite;
+}
+
+.anim-float-c {
+    animation: tfloat-c var(--dur, 20s) ease-in-out var(--delay, 0s) infinite;
+}
+
+.anim-drift {
+    animation: tdrift var(--dur, 18s) ease-in-out var(--delay, 0s) infinite;
+}
+
+.anim-cube {
+    animation: tcube-spin var(--dur, 22s) linear var(--delay, 0s) infinite;
+}
+
+/* ════════════════════════════════════════════════════════
+   ✨  REVEAL ON SCROLL  ·  Staggered entrance
+════════════════════════════════════════════════════════ */
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════════════════
+   🌟  COMPONENT  UTILITY  CLASSES
+════════════════════════════════════════════════════════ */
+
+/* Netflix-style card scale */
+.netflix-card {
+    transition: transform 0.35s cubic-bezier(0.37, 0, 0.63, 1),
+        box-shadow 0.35s ease, border-color 0.35s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.netflix-card:hover {
+    transform: scale(1.055) translateY(-5px);
+    z-index: 10;
+}
+
+/* Shimmer button sweep */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.22) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.55s ease;
+}
+
+.btn-shimmer:hover::after {
+    transform: translateX(120%);
+}
+
+/* Neon text shimmer */
+.text-shimmer {
+    background: linear-gradient(90deg, #39ff14 0%, #22d3ee 40%, #39ff14 70%, #22d3ee 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmer 4s linear infinite;
+}
+
+@keyframes textShimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Nav link underline */
+.nav-link-hover {
+    position: relative;
+}
+
+.nav-link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #39ff14, #22d3ee);
+    border-radius: 999px;
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-hover:hover::after {
+    width: 100%;
+}
+
+/* Neon card hover border */
+.neon-border-card {
+    border: 1px solid rgba(57, 255, 20, 0.08);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.neon-border-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 28px rgba(57, 255, 20, 0.09), inset 0 0 28px rgba(57, 255, 20, 0.02);
+}
+
+/* Logo glow */
+.logo-glow {
+    text-shadow: 0 0 18px rgba(57, 255, 20, 0.55);
+    transition: text-shadow 0.3s ease;
+}
+
+.logo-glow:hover {
+    text-shadow: 0 0 32px rgba(57, 255, 20, 1), 0 0 64px rgba(57, 255, 20, 0.4);
+}
+
+/* Scan-line sweep */
+@keyframes scanDown {
+    0% {
+        transform: translateY(-4px);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.25), transparent);
+    animation: scanDown 5s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Neon flicker */
+@keyframes neonFlicker {
+
+    0%,
+    89%,
+    100% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    92% {
+        opacity: 1;
+    }
+
+    94% {
+        opacity: 0.7;
+    }
+
+    96% {
+        opacity: 1;
+    }
+}
+
+.anim-neon-flicker {
+    animation: neonFlicker 5s ease-in-out infinite;
+}
+
+/* Float for hero image */
+@keyframes heroFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+.anim-hero-float {
+    animation: heroFloat 5s ease-in-out infinite;
+}
+
+/* Fade-in-up (used on hero text) */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.anim-fade-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
