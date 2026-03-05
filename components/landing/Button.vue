@@ -27,7 +27,7 @@ const styles = {
 <template>
   <button
     :class="[
-      'rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200',
+      'rounded text-center transition focus-visible:ring-2 ring-offset-2 bg-green-600',
       block && 'w-full',
       sizes[size],
       styles[styleName],

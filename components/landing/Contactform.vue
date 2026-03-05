@@ -73,7 +73,7 @@ onMounted(() => {
         type="text"
         placeholder="Nombre"
         required
-        class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-lg outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 border-gray-300 transition-colors duration-300"
+        class=" text-black w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-lg outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 border-gray-300 transition-colors duration-300"
         name="name"
       />
       <div class="empty-feedback invalid-feedback text-red-500 text-sm mt-1">
@@ -88,7 +88,7 @@ onMounted(() => {
         placeholder="tu@correo.com"
         name="email"
         required
-        class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-lg outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 border-gray-300 transition-colors duration-300"
+        class=" text-black w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-lg outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 border-gray-300 transition-colors duration-300"
       />
       <div class="empty-feedback text-red-500 text-sm mt-1">
          Proporcione informacion valida porfavor .
@@ -102,7 +102,7 @@ onMounted(() => {
         name="message"
         required
         placeholder="Tu mensaje"
-        class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-lg outline-none h-36 focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 border-gray-300 transition-colors duration-300"
+        class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-lg outline-none h-36 focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 border-gray-300 transition-colors duration-300 text-black"
       ></textarea>
       <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
         Porfavor ingresa tu mensaje .

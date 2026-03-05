@@ -1,9 +1,14 @@
 <script setup>
+import imgFlavio   from "~/assets/integrantes/flavio.jpeg";
+import imgLuciano  from "~/assets/integrantes/luciano2.jpeg";
+import imgRene     from "~/assets/integrantes/rene.jpeg";
+import imgFranco   from "~/assets/integrantes/franco2.jpeg";
+
 const team = [
-  { name: "Flavio Ocampo",  title: "CEO & Founder", avatar: { src: "/flavio.jpeg",  pos: "center 15%" } },
-  { name: "Luciano Alfaro", title: "COO",            avatar: { src: "/luciano.jpeg", pos: "center top" } },
-  { name: "Rene Castro",    title: "CFO",            avatar: { src: "/rene.jpeg",    pos: "center 20%" } },
-  { name: "Franco Davalos", title: "CTO",            avatar: { src: "/franco.jpeg",  pos: "center 35%" } },
+  { name: "Flavio Ocampo",  title: "Desarrollador de Software", avatar: { src: imgFlavio,  pos: "center 15%" } },
+  { name: "Luciano Alfaro", title: "Gestor de Proyecto",            avatar: { src: imgLuciano, pos: "center top" } },
+  { name: "Rene Castro",    title: "Coordinador de Procesos",            avatar: { src: imgRene,    pos: "center 20%" } },
+  { name: "Franco Davalos", title: "Encargado de Sistemas Electrónicos",            avatar: { src: imgFranco,  pos: "center 35%" } },
 ];
 </script>
 
@@ -18,7 +23,7 @@ const team = [
           <span class="text-primary-400 text-xs font-bold tracking-[0.2em] uppercase">Nuestro equipo</span>
         </div>
         <h2 class="text-4xl lg:text-5xl font-black text-white">
-          Las mentes detrás de <span class="text-shimmer">Eco-Infinity</span>
+         <span class="text-shimmer"> Equipo conformado por</span>
         </h2>
         <p class="text-lg mt-4 text-slate-400 max-w-2xl mx-auto">
           Conoce a las personas que impulsan la innovación y sustentabilidad.
