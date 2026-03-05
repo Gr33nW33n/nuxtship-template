@@ -26,7 +26,7 @@ definePageMeta({
           <div class="flex items-center mt-2 space-x-2 text-gray-600">
             <Icon class="text-primary-600 w-5 h-5" name="uil:envelope" /><a
               href="mailto:eco.infinity.contacto@gmail.com"
-              class="hover:text-primary-600 transition-colors"
+              class="hover:text-primary-700 transition-colors"
               >eco.infinity.contacto@gmail.com</a
             >
           </div>
